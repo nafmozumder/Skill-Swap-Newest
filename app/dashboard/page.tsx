@@ -1,20 +1,70 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Users, Star, TrendingUp } from "lucide-react"
 
+import { auth, db } from "@/lib/firebase"
+import { onAuthStateChanged, User } from "firebase/auth"
+import { doc, getDoc } from "firebase/firestore"
+
 export default function DashboardPage() {
+  const [userName, setUserName] = useState<string>("")
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user: User | null) => {
+      console.log("Auth state changed:", user)
+      if (user) {
+        try {
+          const userDocRef = doc(db, "users", user.uid)
+          const userDocSnap = await getDoc(userDocRef)
+
+          if (userDocSnap.exists()) {
+            const userData = userDocSnap.data()
+            console.log("User document fetched:", userData)
+            setUserName(userData.fullName || user.email || "User")
+          } else {
+            console.log("No user document found, using email as fallback")
+            setUserName(user.email || "User")
+          }
+        } catch (error) {
+          console.error("Error fetching user document:", error)
+          setUserName(user.email || "User")
+        }
+      } else {
+        setUserName("Guest")
+      }
+      setLoading(false)
+    })
+
+    return () => unsubscribe()
+  }, [])
+
+  if (loading) {
+    return <p className="text-center mt-8">Loading dashboard...</p>
+  }
+
   return (
     <div className="min-h-screen bg-background py-8">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Welcome Back, Alex!</h1>
-          <p className="text-foreground/60">Here's what's happening with your account</p>
+        {/* Welcome & Profile Button */}
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Welcome Back, {userName}!</h1>
+            <p className="text-foreground/60">Here's what's happening with your account</p>
+          </div>
+
+          {/* Go to Profile */}
+          <Button asChild variant="outline">
+            <Link href="/profile">Go to My Profile</Link>
+          </Button>
         </div>
 
+        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <Card className="p-6">
             <div className="flex items-center justify-between mb-2">
@@ -49,6 +99,7 @@ export default function DashboardPage() {
           </Card>
         </div>
 
+        {/* Upcoming Sessions & Recent Activity */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card className="p-6">
             <h2 className="text-xl font-semibold mb-4">Upcoming Sessions</h2>
