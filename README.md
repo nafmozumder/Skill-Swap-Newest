@@ -2,11 +2,11 @@
 
 A modern, full-featured platform where students can share skills, learn from each other, and build their learning community. Built for the Technology Student Association (TSA) competition.
 
-## 🎯 Project Overview
+## Project Overview
 
 SkillSwap connects students who want to teach with students who want to learn. Whether it's Python tutoring, guitar lessons, photography tips, or language practice, SkillSwap makes it easy to exchange skills in a supportive environment.
 
-## ✨ Features
+##  Features
 
 ### Core Features
 - **User Authentication & Profiles** - Register, create profiles with skills offered and skills sought
@@ -20,7 +20,7 @@ SkillSwap connects students who want to teach with students who want to learn. W
 - **Gamified Achievements** - Unlock badges as you participate and help others
 - **Activity Dashboard** - Track your progress and upcoming sessions
 
-## 📁 Project Structure
+##  Project Structure
 
 \`\`\`
 skillswap/
@@ -97,7 +97,7 @@ skillswap/
 └── package.json
 \`\`\`
 
-## 🎨 Design System
+## Design System
 
 ### Color Palette
 - **Primary (Teal)**: `hsl(190, 100%, 51%)` - Trust, learning, competence
@@ -115,7 +115,7 @@ skillswap/
 - **Badges**: Colored variants for different statuses
 - **Input Fields**: Rounded corners with icon support
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Installation
 
@@ -145,7 +145,7 @@ pnpm dev
 
 4. Open [http://localhost:3000](http://localhost:3000) to see the application.
 
-## 🔌 Backend Integration
+##  Backend Integration
 
 The frontend is ready for backend integration. You'll need to connect:
 
@@ -176,13 +176,13 @@ Replace mock authentication with:
 - Session management with JWT tokens
 - User context/state management
 
-### Data Fetching
+ Data Fetching
 The app uses placeholder data. Connect to backend APIs using:
 - SWR for client-side data fetching
 - Server Components for initial data
 - Route Handlers for API integration
 
-## 📋 File Organization Best Practices
+ File Organization Best Practices
 
 1. **Pages** (`/app`) - One main component per page route
 2. **Components** (`/components`) - Reusable UI components organized by feature
@@ -190,7 +190,7 @@ The app uses placeholder data. Connect to backend APIs using:
 4. **Utils** (`/lib`) - Utility functions and helpers
 5. **Styles** - Tailwind CSS + CSS variables for theming
 
-## 🔒 Security Considerations
+ Security Considerations
 
 - Implement proper authentication and authorization
 - Add Row-Level Security (RLS) policies to database
@@ -199,7 +199,7 @@ The app uses placeholder data. Connect to backend APIs using:
 - Add CSRF protection for form submissions
 - Sanitize user content to prevent XSS
 
-## 🧪 Testing Checklist
+ Testing Checklist
 
 - [ ] User registration and login flow
 - [ ] Profile creation and skill management
@@ -212,7 +212,7 @@ The app uses placeholder data. Connect to backend APIs using:
 - [ ] Responsive design on mobile/tablet
 - [ ] Dark mode compatibility
 
-## 📱 Responsive Design
+ Responsive Design
 
 The platform is fully responsive with:
 - Mobile-first approach
@@ -220,7 +220,7 @@ The platform is fully responsive with:
 - Adaptive layouts for all screen sizes
 - Touch-friendly interface for mobile users
 
-## 🎓 Competition Requirements Met
+ Competition Requirements Met
 
 ✅ Database-driven website with server-side functionality
 ✅ User registration and login
@@ -234,13 +234,13 @@ The platform is fully responsive with:
 ✅ Clean, easy-to-understand directory structure
 ✅ Elegant and interactive UI
 
-## 📝 License
+ License
 
-This project is created for the Technology Student Association (TSA) competition.
+This project is created for the BPA competition.
 
-## 🤝 Contributing
+## Contributing
 
-This is a competition project. For improvements or questions, please refer to the TSA documentation.
+This is a competition project. For improvements or questions, please refer to the BPA documentation.
 
 ---
 
